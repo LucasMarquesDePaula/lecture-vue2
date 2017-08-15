@@ -1,0 +1,80 @@
+<html>
+
+<head>
+  <link type="text/css" rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+  <link type="text/css" rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.css">
+  <link type="text/css" rel="stylesheet" href="/node_modules/c3/c3.min.css">
+  <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="/node_modules/d3/d3.min.js"></script>
+  <script type="text/javascript" src="/node_modules/c3/c3.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Components</h1>
+    <div id="app"></div>
+  </div>
+  <script>
+    (function ($app) {
+
+      // State
+      let data = 50
+      function change(value) {
+        if (data + value < 0 || data + value > 100) {
+          return
+        }
+
+        data += value
+        render() // View
+      }
+
+      // View
+      $app.html(`
+        <div class="row">
+          <div class="col-xs-3"></div>
+          <div class="col-xs-6">
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary minus">-</button>
+              <button type="button" class="btn btn-primary plus">+</button>
+            </div>
+            <div class="gauge"></div>
+          </div>
+        </div>
+      `)
+      let chart = c3.generate({
+        bindto: $app.find(".gauge")[0],
+        data: {
+          columns: [
+            ["data", data]
+          ],
+          type: "gauge",
+        },
+        color: {
+          pattern: ["#FF0000", "#F97600", "#F6C600", "#60B044"],
+          threshold: {
+            values: [30, 60, 90, 100]
+          }
+        },
+        size: {
+          height: 320
+        }
+      })
+      function render() {
+        chart.load({
+          columns: [["data", data]]
+        })
+      }
+
+      // Actions
+      $app.find("button.minus").click(function () {
+        change(-10) // State
+      })
+      $app.find("button.plus").click(function () {
+        change(+10) // State
+      })
+
+    })($("#app"))
+  </script>
+</body>
+
+</html>
