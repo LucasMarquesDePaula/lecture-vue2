@@ -4,10 +4,11 @@
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Write a message" v-model="text" />
         <span class="input-group-btn">
-          <button type="button" class="btn btn-default" :class="{ 'disabled': !text }">
-            Send <i class="fa fa-paper-plane" aria-hidden="true"></i>
+          <button type="submit" class="btn btn-default" :class="{ 'disabled': !text }">
+            Send
+            <i class="fa fa-paper-plane" aria-hidden="true"></i>
           </button>
-       </span>
+        </span>
       </div>
     </form>
   </div>

@@ -53,7 +53,7 @@ export default {
   background: #666;
   color: #fff;
   overflow: hidden;
-  padding: 10px;
+  padding: 10px 5px 30px 5px;
   position: relative;
   height: $top-bar-height;
   max-height: $top-bar-height;

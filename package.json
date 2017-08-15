@@ -1,8 +1,8 @@
 {
   "name": "odw-form",
-  "version": "1.0.0",
-  "description": "Form helper using Vue.js",
-  "author": "IANDev Sistemas",
+  "version": "0.0.1",
+  "description": "Examples using Vue 2",
+  "author": "Lucas Marques de Paula",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",

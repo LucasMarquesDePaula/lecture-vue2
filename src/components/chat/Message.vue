@@ -14,7 +14,6 @@
 import moment from "moment"
 
 export default {
-  name: "message",
   props: {
     author: {
       type: Object,
@@ -54,51 +53,58 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$profile-size: 64px;
+$box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+
 .message {
   display: block;
+  margin: 12px auto;
+  width: 100%;
 
   .inner {
-    background: #fff;
-    border-radius: 2px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
-    display: inline-block;
-    max-width: 100%;
-    padding: 10px;
-    padding-bottom: 20px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: $box-shadow;
+    margin-left: $profile-size;
+    min-height: $profile-size;
+    padding: 6px 12px;
+    width: calc(100% - 2 * #{$profile-size});
   }
 
   .author {
     display: inline;
+    font-size: 1em;
+  }
+
+  .date {
+    font-size: 0.8em;
+  }
+
+  .text {
+    font-size: 1.2em;
+    text-overflow: ellipsis;
   }
 
   .profile {
-    height: 46px;
-    float: right !important;
+    background-color: #FFFFFF;
+    box-shadow: $box-shadow;
+    border-radius: 50% 0 0 50%;
+    float: left !important;
+    height: $profile-size;
+    padding: 4px;
   }
 
   &.self-authored {
     .inner {
-      background: #ECEFF1; // float: left !important;
-    }
-
-    .author {
-      float: left !important;
+      background: #C8E6C9;
     }
 
     .profile {
-      float: left !important;
+      display: none;
+      border-radius: 0 50% 50% 0;
+      background-color: #C8E6C9;
+      float: right !important;
     }
-  }
-
-
-  p {
-    font-size: 13px;
-    margin: 0 0 .2rem;
-  }
-
-  .date {
-    color: #ccc;
-    font-size: 11px;
   }
 }
 </style>

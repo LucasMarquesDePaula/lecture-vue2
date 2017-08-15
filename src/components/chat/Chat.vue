@@ -1,16 +1,14 @@
 <template>
-  <div class="chat row col-xs-5 col-md-3" :class="clazz">
-    <div class="col-xs-12 col-md-12">
-      <div class="panel">
-        <div class="panel-heading">
-          <top-bar :is-minimized="isMinimized" @toogle="toogle"></top-bar>
-        </div>
-        <div class="panel-body">
-          <container></container>
-        </div>
-        <div class="panel-footer">
-          <bottom-bar @submit="addMessage"></bottom-bar>
-        </div>
+  <div class="chat row" :class="clazz">
+    <div class="panel">
+      <div class="panel-heading">
+        <top-bar :is-minimized="isMinimized" :title="user.name" @toggle="toggle"></top-bar>
+      </div>
+      <div class="panel-body">
+        <container :messages="messages" :user="user" :background="user.background"></container>
+      </div>
+      <div class="panel-footer">
+        <bottom-bar @submit="submit"></bottom-bar>
       </div>
     </div>
   </div>
@@ -22,33 +20,39 @@ import Container from "./Container"
 import TopBar from "./TopBar"
 
 export default {
-  name: "chat",
   components: {
     BottomBar, Container, TopBar
-  }
+  },
   props: {
-    isMinimized: {
-      type: Boolean,
-      default: true
+    messages: {
+      type: Array,
+      default() {
+        return []
+      }
+    },
+    user: {
+      type: Object,
+      required: true
     }
   },
   data() {
     return {
-
+      isMinimized: false
+    }
+  },
+  computed: {
+    clazz() {
+      return {
+        minimized: this.isMinimized
+      }
     }
   },
   methods: {
-    class() {
-      return {
-        minimized: this.isMinimized,
-        [this.theme]: true
-      }
-    },
-    toogle() {
+    toggle() {
       this.isMinimized = !this.isMinimized
     },
-    addMessage(message) {
-      this.$emit("addMessage", message)
+    submit(text) {
+      this.$emit("submit", { author: this.user, date: new Date(), text: text })
     }
   }
 }
@@ -71,6 +75,16 @@ export default {
     border-radius: 5px 5px 0 0;
     margin-bottom: 0;
     height: 100%;
+    >* {
+      padding: 0;
+    }
+  }
+
+  &.minimized {
+    .panel-body,
+    .panel-footer {
+      display: none;
+    }
   }
 }
 </style>

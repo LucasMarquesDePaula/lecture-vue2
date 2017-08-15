@@ -1,8 +1,13 @@
 <template>
-  <ul class="sidebar-nav">
+  <ul class="sidebar-nav metismenu">
     <li class="sidebar-brand">
       <a href="#">
         Vue 2
+      </a>
+    </li>
+    <li>
+      <a href="#/">
+        Hello
       </a>
     </li>
     <li>
@@ -11,7 +16,7 @@
       </a>
       <ul aria-expanded="true">
         <li>
-          <a href="#/chat/chat">
+          <a href="#/chat">
             Demo
           </a>
         </li>
@@ -36,6 +41,11 @@
           </a>
         </li>
       </ul>
+    </li>
+    <li>
+      <a href="#/about">
+        Sobre
+      </a>
     </li>
   </ul>
 </template>

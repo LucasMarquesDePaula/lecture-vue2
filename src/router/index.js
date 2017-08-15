@@ -13,7 +13,12 @@ export default new Router({
     {
       path: "/about",
       name: "About",
-      component: (resolve) => require(["@/pages/Hello"], resolve)
+      component: (resolve) => require(["@/pages/About"], resolve)
+    },
+    {
+      path: "/chat/bottom-bar",
+      name: "Bottom Bar",
+      component: (resolve) => require(["@/pages/chat/BottomBar"], resolve)
     },
     {
       path: "/chat",
@@ -21,9 +26,9 @@ export default new Router({
       component: (resolve) => require(["@/pages/chat/Chat"], resolve)
     },
     {
-      path: "/chat/bottom-bar",
-      name: "Bottom Bar",
-      component: (resolve) => require(["@/pages/chat/BottomBar"], resolve)
+      path: "/chat/container",
+      name: "Container",
+      component: (resolve) => require(["@/pages/chat/Container"], resolve)
     },
     {
       path: "/chat/message",

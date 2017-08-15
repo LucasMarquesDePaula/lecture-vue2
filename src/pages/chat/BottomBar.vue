@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>Bottom Bar</h1>
     <bottom-bar @submit="addMessage"></bottom-bar>
     <div>
       <ul class="list-group">

@@ -1,6 +1,7 @@
 <template>
   <div>
-    <top-bar title="Top Bar"/>
+    <h1>Top Bar</h1>
+    <top-bar title="Title"/>
   </div>
 </template>
 

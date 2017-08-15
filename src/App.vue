@@ -1,5 +1,5 @@
 <template>
-  <div id="wrapper">
+  <div id="wrapper" :class="clazz">
     <!-- Sidebar -->
     <nav id="sidebar-wrapper">
       <sidebar-nav></sidebar-nav>
@@ -8,6 +8,7 @@
   
     <!-- Page Content -->
     <div id="page-content-wrapper">
+      <button type="button" class="btn btn-default" @click="toggle">Toggle</button>
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-12">
@@ -27,15 +28,29 @@ import "metismenu/dist/metisMenu.min.css"
 
 import SidebarNav from "./SidebarNav"
 
-const $ = window.$ = window.jQuery = require("jquery")
+window.$ = window.jQuery = require("jquery")
 require("bootstrap")
 
 export default {
   components: {
     SidebarNav
   },
-  mounted() {
-    $(this.$el).toggleClass("toggled")
+  data() {
+    return {
+      toggled: true
+    }
+  },
+  computed: {
+    clazz() {
+      return {
+        toggled: this.toggled
+      }
+    }
+  },
+  methods: {
+    toggle() {
+      this.toggled = !this.toggled
+    }
   }
 }
 </script>
@@ -45,6 +60,7 @@ $sidebar-width: 250px;
 
 body {
   overflow-x: hidden;
+  background: #e0e0e0;
 }
 
 #wrapper {
@@ -70,6 +86,11 @@ body {
   }
 }
 
+#page-content-wrapper,
+#sidebar-wrapper {
+  height: 100%;
+}
+
 #sidebar-wrapper {
   left: $sidebar-width;
   margin-left: - $sidebar-width;
@@ -77,7 +98,6 @@ body {
   -o-transition: all .5s ease;
   -webkit-transition: all .5s ease;
   background: #000;
-  height: 100%;
   overflow-y: auto;
   position: fixed;
   transition: all .5s ease;
