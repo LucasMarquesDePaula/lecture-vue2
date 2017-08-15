@@ -1,6 +1,6 @@
-# odw-form
+# lecture-vue2
 
-> Form helper using Vue.js
+> Examples using Vue.js
 
 ## Build Setup
 
