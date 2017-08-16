@@ -36,7 +36,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./style/config";
+
+$bottom-bar-height: 70px;
 
 .bottom-bar {
   overflow: hidden;

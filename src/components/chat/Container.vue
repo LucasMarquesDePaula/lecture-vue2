@@ -53,9 +53,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./style/config";
 
-// $container-ignorespace: ($top-bar-height + $bottom-bar-height);
 .container {
   background-color: "#eee";
   background-size: cover;

@@ -18,13 +18,14 @@
     (function ($app) {
 
       // State
-      let data = 50
-      function change(value) {
-        if (data + value < 0 || data + value > 100) {
+      let value = 50
+
+      function change(increment) {
+        if (value + increment < 0 || value + increment > 100) {
           return
         }
 
-        data += value
+        value += increment
         render() // View
       }
 
@@ -41,11 +42,12 @@
           </div>
         </div>
       `)
+
       let chart = c3.generate({
         bindto: $app.find(".gauge")[0],
         data: {
           columns: [
-            ["data", data]
+            ["value", value]
           ],
           type: "gauge",
         },
@@ -59,9 +61,10 @@
           height: 320
         }
       })
+
       function render() {
         chart.load({
-          columns: [["data", data]]
+          columns: [["value", value]]
         })
       }
 
@@ -69,11 +72,13 @@
       $app.find("button.minus").click(function () {
         change(-10) // State
       })
+
       $app.find("button.plus").click(function () {
         change(+10) // State
       })
 
     })($("#app"))
+
   </script>
 </body>
 

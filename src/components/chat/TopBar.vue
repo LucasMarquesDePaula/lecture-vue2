@@ -47,7 +47,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./style/config";
+
+$top-bar-height: 40px;
 
 .top-bar {
   background: #666;

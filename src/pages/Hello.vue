@@ -1,14 +1,12 @@
 <template>
-  <div id="app">
+  <div>
     {{ message }}
   </div>
 </template>
 <script>
-import Vue from "vue"
-new Vue({
-  el: "#app",
+export default {
   data: {
     message: "Hello Vue!"
   }
-})
+}
 </script>

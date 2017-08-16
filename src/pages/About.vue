@@ -43,7 +43,7 @@
 export default {
   data() {
     return {
-      msg: "Template created for Vue 2 lecture",
+      msg: "Ola mundo",
       lastUpdate: "14/08/2017"
     }
   }
